@@ -29,7 +29,7 @@ const CompMostrarRegistros = () => {
         <div className='container'>
             <div className='row'>
                 <div className='col'>
-                <Link to={`/crear/`} className='btn btn-primary mt-2 mb-2'><i className="fa-solid fa-plus"></i></Link>
+                <Link to={`/usuarios/crear/`} className='btn btn-primary mt-2 mb-2'><i className="fa-solid fa-plus"></i></Link>
 
                     <table className='table'>
                         <thead className='table-primary'>

@@ -17,7 +17,7 @@ const CompCrearRegistro = () => {
         //esto es para evitar el submit que hace el formulario
         e.preventDefault()
         await axios.post(URI, {name: name, surname: surname, username: username, passwd: passwd, type: type})
-        navigate ('/')
+        navigate ('/usuarios')
     }
 
 

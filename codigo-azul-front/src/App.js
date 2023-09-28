@@ -1,19 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
 
-import CompMostrarRegistros from './components/MostrarRegistro';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CompCrearRegistro from './components/CrearRegistro';
-import CompEditarRegistro from './components/EditarRegistro';
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import CompCrearRegistro from './components/CRUD/CrearRegistro';
+// import CompEditarRegistro from './components/CRUD/EditarRegistro';
+import Home from './components/Home'
+import CompMostrarRegistros from './components/CRUD_usuarios/MostrarRegistro';
+import CompCrearRegistro from './components/CRUD_usuarios/CrearRegistro'
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<CompMostrarRegistros/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/usuarios/' element={<CompMostrarRegistros/>}/>
+          <Route path='/usuarios/crear/' element={<CompCrearRegistro/>}/>
+          {/*
           <Route path='/crear' element={<CompCrearRegistro/>}/>
-          <Route path='/editar/:id' element={<CompEditarRegistro/>}/>
+          <Route path='/editar/:id' element={<CompEditarRegistro/>}/> */}
         </Routes>
       </BrowserRouter>
 

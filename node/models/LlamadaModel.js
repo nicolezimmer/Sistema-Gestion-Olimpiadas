@@ -7,7 +7,6 @@ import { DataTypes } from "sequelize"
 //definir modelos (abstraccion de las tablas)
 const LlamadaModel = db.define('calls', {
     type: { type: DataTypes.STRING},
-    response_time: { type: DataTypes.STRING},
     status: { type: DataTypes.STRING},
     start_hour: { type: DataTypes.STRING},
     finish_hour: { type: DataTypes.STRING},

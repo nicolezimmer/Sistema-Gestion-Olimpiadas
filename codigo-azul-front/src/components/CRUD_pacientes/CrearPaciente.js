@@ -19,22 +19,18 @@ const CompCrearPaciente = () => {
 
     const guardar = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post(URI, {
-                name: name,
-                surname: surname,
-                DNI: DNI,
-                birth_date: birth_date,
-                gender: gender,
-                direction: direction,
-                health_insurance: health_insurance,
-                nurse: nurse,
-                id_areas: id_areas,
-            });
-            navigate('/pacientes');
-        } catch (error) {
-            console.error('Error al crear el registro:', error);
-        }
+        await axios.post(URI, {
+            name: name,
+            surname: surname,
+            DNI: DNI,
+            birth_date: birth_date,
+            gender: gender,
+            direction: direction,
+            health_insurance: health_insurance,
+            nurse: nurse,
+            id_areas: id_areas,
+        });
+        navigate('/pacientes');
     };
 
     return (

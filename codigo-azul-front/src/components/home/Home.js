@@ -1,9 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './home.css';
-export const Home = () => {
+import Alarma from '../Alarma';
+ const Home = () => {
   return (
-
+    <>
+      <Alarma/>
       <div className="main">
         <div></div>
         <Link to={`/usuarios/`} className='hom usu'></Link>
@@ -12,7 +14,7 @@ export const Home = () => {
         <div className='hom butbot are'></div>
         <div></div>
       </div>
-
+    </>
   )
 }
 

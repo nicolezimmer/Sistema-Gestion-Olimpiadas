@@ -2,10 +2,10 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 
-const URI = 'http://localhost:8000/usuarios/'
+const URI = 'http://localhost:8000/areas/'
 
 const CompMostrarRegistros = () => {
-    const [registros, setRegistros] = useState([])
+    const [name, setName] = useState([])
     useEffect (()=>{
         getRegistros()
     }, [])

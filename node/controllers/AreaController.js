@@ -25,6 +25,21 @@ export const getAreaById = async (req, res) => {
         res.json({ message: error.message });
     }
 }
+// Mostrar un área por ID
+export const getAreaByName = async (req, res) => {
+    try {
+        const area = await AreaModel.findOne({
+            where: { name: req.params.name }
+        });
+        if (!area) {
+            return res.status(404).json({ message: "Área no encontrada" });
+        }
+        res.json(area);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 
 // Crear una nueva área
 export const createArea = async (req, res) => {

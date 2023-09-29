@@ -23,6 +23,8 @@ router.delete('/pacientes/:id', PacienteController.deletePatientById);
 // Rutas para áreas
 router.get('/areas', AreaController.getAllAreas);
 router.get('/areas/:id', AreaController.getAreaById);
+router.get('/areas/name/:name', AreaController.getAreaByName);
+
 router.post('/areas', AreaController.createArea);
 router.put('/areas/:id', AreaController.updateAreaById);
 router.delete('/areas/:id', AreaController.deleteAreaById);

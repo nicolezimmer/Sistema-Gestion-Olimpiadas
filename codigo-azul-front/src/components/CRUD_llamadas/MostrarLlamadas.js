@@ -78,8 +78,11 @@ const CompMostrarRegistros = () => {
     // 0 atendida, 1 en curso
     return (
         <div className='container'>
-            <Link to={`/llamadas/filtrar/area`} className='btn btn-primary mt-2 mb-2'>Filtrar por area</Link>
-
+            <div>
+                <Link to={`/llamadas/filtrar/area`} className='btn btn-primary mt-2 mb-2'>Filtrar por area</Link>
+                <Link to={`/llamadas/Estadisticas`} className='btn btn-primary mt-2 mb-2'>Estadisticas</Link>
+            </div>
+            
             <div className='row'>
                 <div className='col'>
                     <table className='table'>

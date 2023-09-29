@@ -1,9 +1,6 @@
 import React from 'react'
 import { Bar, BarChart, CartesianGrid, Legend,  ResponsiveContainer, Tooltip, XAxis, YAxis, Pie, Cell, PieChart } from "recharts";
 
-const URI = 'http://localhost:8000/usuarios/';
-
-
 const Semana = [{ dia: "Lun", Llamadas: Math.floor(Math.random() * 100) + 50,},
 { dia: "Mar", Llamadas: Math.floor(Math.random() * 100) + 50,},
 { dia: "Mie", Llamadas: Math.floor(Math.random() * 100) + 50,},
@@ -17,7 +14,7 @@ const Estado = [{ name: "Atendido", valor: Math.floor(Math.random() * 100) + 50,
 { name: "No atendidos", valor: Math.floor(Math.random() * 100) + 50,}, 
 ];
 
-export const GraficoBarra = () => {
+const GraficoBarra = () => {
   return (
     <>
         <h5>Total de alertas de la ultima semana</h5>
@@ -47,3 +44,4 @@ export const GraficoBarra = () => {
   )
 }
 
+export default GraficoBarra;

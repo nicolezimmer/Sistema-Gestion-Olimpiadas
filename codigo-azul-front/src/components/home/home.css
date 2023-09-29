@@ -2,16 +2,6 @@
     margin: 0px ;
     padding: 0px ;
 }
-/* 
-#hf{
-    display: grid;
-    position: relative; 
-    width: 100%;
-    background-color: #C0CEFF;
-}
-#fondo{
-    height: 80vh;
-} */
 
 
 
@@ -19,10 +9,6 @@
     display: grid;
     position: relative;
     padding-right: 15px;
-    background-color: #C0CEFF;
-    /* background-image: url('iconos/fondo.png');
-    background-repeat: no-repeat;
-    background-position: center center; */
     min-height: 80vh;
     grid-template-columns: auto repeat(4, 27.7vh) auto;
     grid-template-rows: auto repeat(2, 27.5vh) auto;
@@ -31,7 +17,7 @@
 .hom{
     position: relative;
     margin-top: -4.8%;
-    border-radius: 15px;
+    border-radius: 3vh;
     height: 27.5vh;
     background-color: #244CDA;
     transition: transform 0.3s ease;

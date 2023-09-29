@@ -22,6 +22,8 @@ import CompMostrarArea from './components/CRUD_areas/MostrarArea'
 import CompCrearArea from './components/CRUD_areas/CrearArea'
 import CompEditarArea from './components/CRUD_areas/EditarArea'
 
+import CompMostraLlamadas from './components/CRUD_llamadas/MostrarLlamadas'
+
 import Head from './components/encabezado/Head.js'
 function App() {
   return (
@@ -46,6 +48,10 @@ function App() {
           <Route path='/areas/editar/:id' element={<CompEditarArea/>}/>
           <Route path='/areas/crear/' element={<CompCrearArea/>}/>
 
+          {/* Crud llamadas */}
+          <Route path='/llamadas/' element={<CompMostraLlamadas/>}/>
+          {/* <Route path='/areas/editar/:id' element={<CompEditarArea/>}/>
+          <Route path='/areas/crear/' element={<CompCrearArea/>}/> */}
         </Routes>
       </BrowserRouter>
 

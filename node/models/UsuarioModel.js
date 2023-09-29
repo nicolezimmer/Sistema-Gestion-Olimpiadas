@@ -5,7 +5,7 @@ import db from "../database/db.js"
 //importar sequelize 
 import { DataTypes } from "sequelize"
 //definir modelos (abstraccion de las tablas)
-const GestionModel = db.define('users', {
+const UsuarioModel = db.define('users', {
     name: { type: DataTypes.STRING},
     surname: { type: DataTypes.STRING},
     username: { type: DataTypes.STRING},
@@ -15,7 +15,7 @@ const GestionModel = db.define('users', {
     timestamps: false
   })
 
-export default GestionModel
+export default UsuarioModel
 
 
 

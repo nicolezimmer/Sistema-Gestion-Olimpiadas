@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 
-const URI = 'http://localhost:8000/fram/'
+const URI = 'http://localhost:8000/usuarios/'
 
 const CompMostrarRegistros = () => {
     const [registros, setRegistros] = useState([])
@@ -46,7 +46,7 @@ const CompMostrarRegistros = () => {
                                     <td>{registro.surname}</td>
                                     <td>{registro.type}</td>
                                     <td>
-                                        <Link to={`/editar/${registro.id}`} className='btn btn-info'><i className="fa-solid fa-pen-to-square"></i></Link>
+                                        <Link to={`/usuarios/editar/${registro.id}`} className='btn btn-info'><i className="fa-solid fa-pen-to-square"></i></Link>
                                         <button onClick={()=>deleteRegistro(registro.id)} className='btn btn-danger'><i className="fa-solid fa-trash"></i></button>
                                     </td>
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const URI = 'http://localhost:8000/fram/'
+const URI = 'http://localhost:8000/usuarios/'
 
 const CompCrearRegistro = () => {
     const [name, setName] = useState("")

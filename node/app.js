@@ -9,7 +9,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use('/fram', framRoutes)
+app.use('/', framRoutes)
 
 try{
     await db.authenticate()

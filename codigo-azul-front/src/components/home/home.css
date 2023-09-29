@@ -1,0 +1,53 @@
+* {
+    margin: 0px ;
+    padding: 0px ;
+}
+
+.main{
+    display: grid;
+    position: relative;
+    padding-right: 15px;
+    background-color: #C0CEFF;
+    background-image: url('iconos/fondo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    grid-template-columns: auto repeat(4, 20vh) auto;
+    grid-template-rows: auto 189px 189px auto;
+}
+.hom{
+    position: relative;
+    margin-top: -4.8%;
+    border-radius: 15px;
+    height: 189px;
+    background-color: #244CDA;
+    transition: transform 0.3s ease;
+    background-size: cover;
+    background-position: center center;
+}
+.hom:hover{
+    transform: scale(0.95);
+    filter: brightness(80%);
+}
+
+.usu{
+    background-image: url('iconos/usuarios.png');
+    grid-column: 2;
+    grid-row: 2;
+    
+}
+.ale{
+    background-image: url('iconos/alertas.png');
+    grid-column: 3;
+    grid-row: 3;
+}
+.pac{
+    background-image: url('iconos/pacientes.png');
+    grid-column: 4;
+    grid-row: 2;
+}
+.are{
+    background-image: url('iconos/areas.png');
+    grid-column: 5;
+    grid-row: 3;
+}

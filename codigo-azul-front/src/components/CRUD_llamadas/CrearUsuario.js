@@ -1,57 +1,30 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const URI = 'http://localhost:8000/fram/';
+const URI = 'http://localhost:8000/usuarios/'
 
-const CompEditarRegistro = () => {
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [username, setUsername] = useState('');
-    const [passwd, setPasswd] = useState('');
-    const [type, setType] = useState('');
+const CompCrearRegistro = () => {
+    const [name, setName] = useState("")
+    const [surname, setSurname] = useState("")
+    const [username, setUsername] = useState("")
+    const [passwd, setPasswd] = useState("")
+    const [type, setType] = useState("")
 
-    const navigate = useNavigate();
-    const { id } = useParams();
+    const navigate = useNavigate()
 
-    useEffect(() => {
-        getRegistroById();
-    }, []);
+    const guardar = async (e) => {
+        //esto es para evitar el submit que hace el formulario
+        e.preventDefault()
+        await axios.post(URI, {name: name, surname: surname, username: username, passwd: passwd, type: type})
+        navigate ('/usuarios')
+    }
 
-    const getRegistroById = async () => {
-        try {
-            const response = await axios.get(URI + id);
-            const registro = response.data; // Suponiendo que la respuesta contiene los datos del registro
-            setName(registro.name);
-            setSurname(registro.surname);
-            setUsername(registro.username);
-            setPasswd(registro.passwd);
-            setType(registro.type);
-        } catch (error) {
-            console.error('Error al obtener el registro:', error);
-        }
-    };
-
-    const editar = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.put(URI + id, {
-                name: name,
-                surname: surname,
-                username: username,
-                passwd: passwd,
-                type: type,
-            });
-            navigate('/');
-        } catch (error) {
-            console.error('Error al editar el registro:', error);
-        }
-    };
 
     return(
         <div className="container">
-            <h1>Editar registro</h1>
-            <form onSubmit={editar}>
+            <h1>Crear registro</h1>
+            <form onSubmit={guardar}>
                 <div className="mb-3">
                     <label className="form-label">Nombre</label>
                     <input
@@ -107,7 +80,8 @@ const CompEditarRegistro = () => {
         </div>
 
         
-    )    
+    )
+
 }
 
-export default CompEditarRegistro
+export default CompCrearRegistro

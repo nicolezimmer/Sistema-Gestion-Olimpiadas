@@ -5,18 +5,22 @@ import db from "../database/db.js"
 //importar sequelize 
 import { DataTypes } from "sequelize"
 //definir modelos (abstraccion de las tablas)
-const GestionModel = db.define('users', {
+const PacienteModel = db.define('pacients', {
     name: { type: DataTypes.STRING},
     surname: { type: DataTypes.STRING},
-    username: { type: DataTypes.STRING},
-    passwd: { type: DataTypes.STRING},
-    type: { type: DataTypes.STRING}
+    DNI: { type: DataTypes.STRING},
+    birth_date: { type: DataTypes.STRING},
+    gender: { type: DataTypes.STRING},
+    direction: { type: DataTypes.STRING},
+    health_insurance: { type: DataTypes.STRING},
+    nurse: { type: DataTypes.STRING},
+    id_areas: { type: DataTypes.STRING}
+
 }, {
     timestamps: false
   })
 
-export default GestionModel
-
+export default PacienteModel
 
 
 

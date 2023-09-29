@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const URI = 'http://localhost:8000/pacientes/';
+const URIarea = 'http://localhost:8000/areas/';
 
 const CompEditarPaciente = () => {
     const [name, setName] = useState('');
@@ -13,13 +14,15 @@ const CompEditarPaciente = () => {
     const [direction, setDirection] = useState('');
     const [healthInsurance, setHealthInsurance] = useState('');
     const [nurse, setNurse] = useState('');
-    const [idAreas, setIdAreas] = useState('');
+    const [areaId, setAreaId] = useState(''); // Cambiado a 'areaId'
+    const [areas, setAreas] = useState([]); // Estado para las áreas
 
     const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
         getRegistroById();
+        getAreas(); // Llamada a la función para obtener las áreas cuando el componente se monta
     }, []);
 
     const getRegistroById = async () => {
@@ -34,10 +37,15 @@ const CompEditarPaciente = () => {
             setDirection(registro.direction);
             setHealthInsurance(registro.health_insurance);
             setNurse(registro.nurse);
-            setIdAreas(registro.id_areas);
+            setAreaId(registro.id_areas);
         } catch (error) {
             console.error('Error al obtener el registro:', error);
         }
+    };
+
+    const getAreas = async () => {
+        const res = await axios.get(URIarea);
+        setAreas(res.data);
     };
 
     const editar = async (e) => {
@@ -52,7 +60,7 @@ const CompEditarPaciente = () => {
                 direction: direction,
                 health_insurance: healthInsurance,
                 nurse: nurse,
-                id_areas: idAreas,
+                id_areas: areaId, // Usar areaId en lugar de idAreas
             });
             navigate('/pacientes/');
         } catch (error) {
@@ -141,13 +149,19 @@ const CompEditarPaciente = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">ID Áreas</label>
-                    <input
-                        value={idAreas}
-                        onChange={(e) => setIdAreas(e.target.value)}
-                        type="text"
-                        className="form-control"
-                    />
+                    <label className="form-label">Área</label>
+                    <select
+                        value={areaId}
+                        onChange={(e) => setAreaId(e.target.value)}
+                        className="form-select"
+                    >
+                        <option value="">Seleccione un área</option>
+                        {areas.map((area) => (
+                            <option key={area.id} value={area.id}>
+                                {area.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <button type="submit" className="btn btn-primary"><i className="fa-solid fa-floppy-disk"></i></button>
             </form>

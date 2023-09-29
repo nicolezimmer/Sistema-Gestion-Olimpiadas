@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 const URI = 'http://localhost:8000/areas/'
 
 const CompMostrarRegistros = () => {
-    const [name, setName] = useState([])
+    const [registros, setRegistros] = useState([])
     useEffect (()=>{
         getRegistros()
     }, [])
@@ -29,13 +29,13 @@ const CompMostrarRegistros = () => {
         <div className='container'>
             <div className='row'>
                 <div className='col'>
-                <Link to={`/usuarios/crear/`} className='btn btn-primary mt-2 mb-2'><i className="fa-solid fa-plus"></i></Link>
+                <Link to={`/areas/crear/`} className='btn btn-primary mt-2 mb-2'><i className="fa-solid fa-plus"></i></Link>
 
                     <table className='table'>
                         <thead className='table-primary'>
                             <tr>
-                                <th>title</th>
-                                <th>content</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
                                 <th>actions</th>
                             </tr>
                         </thead>
@@ -43,10 +43,9 @@ const CompMostrarRegistros = () => {
                             {registros.map ((registro)=>(
                                 <tr key={registro.id}>
                                     <td>{registro.name}</td>
-                                    <td>{registro.surname}</td>
-                                    <td>{registro.type}</td>
+                                    <td>{registro.description}</td>
                                     <td>
-                                        <Link to={`/usuarios/editar/${registro.id}`} className='btn btn-info'><i className="fa-solid fa-pen-to-square"></i></Link>
+                                        <Link to={`/areas/editar/${registro.id}`} className='btn btn-info'><i className="fa-solid fa-pen-to-square"></i></Link>
                                         <button onClick={()=>deleteRegistro(registro.id)} className='btn btn-danger'><i className="fa-solid fa-trash"></i></button>
                                     </td>
 

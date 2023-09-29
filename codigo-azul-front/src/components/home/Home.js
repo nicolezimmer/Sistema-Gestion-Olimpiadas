@@ -1,17 +1,18 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './home.css';
-import Alarma from '../Alarma';
- const Home = () => {
+
+export const Home = () => {
   return (
     <>
-      <Alarma/>
+
+
       <div className="main">
         <div></div>
         <Link to={`/usuarios/`} className='hom usu'></Link>
-        <div className='hom butbot ale'></div>
+        <Link to={`/pacientes/`} className='hom butbot ale'></Link>
         <Link to={`/pacientes/`} className='hom pac'></Link>
-        <div className='hom butbot are'></div>
+        <Link to={`/areas/`} className='hom butbot are'></Link>
         <div></div>
       </div>
     </>

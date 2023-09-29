@@ -2,14 +2,11 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const URI = 'http://localhost:8000/usuarios/'
+const URI = 'http://localhost:8000/areas/'
 
 const CompEditarRegistro = () => {
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [username, setUsername] = useState('');
-    const [passwd, setPasswd] = useState('');
-    const [type, setType] = useState('');
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -23,10 +20,7 @@ const CompEditarRegistro = () => {
             const response = await axios.get(URI + id);
             const registro = response.data; // Suponiendo que la respuesta contiene los datos del registro
             setName(registro.name);
-            setSurname(registro.surname);
-            setUsername(registro.username);
-            setPasswd(registro.passwd);
-            setType(registro.type);
+            setDescription(registro.description);
         } catch (error) {
             console.error('Error al obtener el registro:', error);
         }
@@ -37,12 +31,10 @@ const CompEditarRegistro = () => {
         try {
             await axios.put(URI + id, {
                 name: name,
-                surname: surname,
-                username: username,
-                passwd: passwd,
-                type: type,
+                description: description,
+
             });
-            navigate('/usuarios/');
+            navigate('/areas/');
         } catch (error) {
             console.error('Error al editar el registro:', error);
         }
@@ -63,45 +55,15 @@ const CompEditarRegistro = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Apellido</label>
+                    <label className="form-label">Descripcion</label>
                     <input
-                        value={surname}
-                        onChange={(e)=> setSurname(e.target.value)}
+                        value={description}
+                        onChange={(e)=> setDescription(e.target.value)}
                         type="text"
                         className="form-control"
                     
                     />               
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Username</label>
-                    <input
-                        value={username}
-                        onChange={(e)=> setUsername(e.target.value)}
-                        type="text"
-                        className="form-control"
-                    
-                    />               
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Contraseña</label>
-                    <input
-                        value={passwd}
-                        onChange={(e)=> setPasswd(e.target.value)}
-                        type="text"
-                        className="form-control"
-                    
-                    />               
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Tipo</label>
-                    <input
-                        value={type}
-                        onChange={(e)=> setType(e.target.value)}
-                        type="text"
-                        className="form-control"
-                    
-                    />                   
-               </div>
                <button type="submit" className="btn btn-primary"><i className="fa-solid fa-floppy-disk"></i></button>
             </form>
         </div>

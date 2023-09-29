@@ -11,7 +11,8 @@ const LlamadaModel = db.define('calls', {
     start_hour: { type: DataTypes.STRING},
     finish_hour: { type: DataTypes.STRING},
     id_users: { type: DataTypes.STRING},
-    id_pacient: { type: DataTypes.STRING}
+    id_pacient: { type: DataTypes.STRING},
+    id_areas: { type: DataTypes.STRING}
 
 }, {
     timestamps: false

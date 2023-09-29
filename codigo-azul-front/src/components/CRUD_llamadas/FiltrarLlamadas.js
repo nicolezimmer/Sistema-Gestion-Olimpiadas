@@ -7,21 +7,17 @@ import moment from 'moment'; // Importa la biblioteca moment
 const URI = 'http://localhost:8000/llamadas/';
 const URIusuario = 'http://localhost:8000/usuarios/';
 const URIpaciente = 'http://localhost:8000/pacientes/';
-const URIarea = 'http://localhost:8000/areas/';
 
-const CompMostrarRegistros = () => {
+const CompFiltrarLlamadas = () => {
     const [registros, setRegistros] = useState([]);
     const [updateStatus, setUpdateStatus] = useState(false);
     const [usuarios, setUsuarios] = useState([]); 
     const [pacientes, setPacientes] = useState([]); 
-    const [areas, setAreas] = useState([]); 
 
     useEffect(() => {
         getRegistros();
         getUsuarios();
         getPacientes();
-        getAreas(); 
-
         // Inicia el sondeo cada 5 segundos (ajusta el intervalo según tus necesidades)
         const pollingInterval = setInterval(() => {
             getRegistros();
@@ -30,10 +26,7 @@ const CompMostrarRegistros = () => {
         // Detiene el sondeo cuando el componente se desmonta
         return () => clearInterval(pollingInterval);
     }, []);
-    const getAreas = async () => {
-        const res = await axios.get(URIarea);
-        setAreas(res.data);
-    };
+
     const getRegistros = async () => {
         const res = await axios.get(URI);
         setRegistros(res.data);
@@ -54,10 +47,7 @@ const CompMostrarRegistros = () => {
         const paciente = pacientes.find((a) => a.id === pacienteId);
         return paciente ? paciente.DNI : '';
     };
-    const getAreaNameById = (areaId) => {
-        const area = areas.find((a) => a.id === areaId);
-        return area ? area.name : '';
-    };
+
 
     const deleteRegistro = async (id) => {
         await axios.delete(`${URI}${id}`);
@@ -78,8 +68,7 @@ const CompMostrarRegistros = () => {
     // 0 atendida, 1 en curso
     return (
         <div className='container'>
-            <Link to={`/llamadas/filtrar/area`} className='btn btn-primary mt-2 mb-2'>Filtrar por area</Link>
-
+            
             <div className='row'>
                 <div className='col'>
                     <table className='table'>
@@ -91,27 +80,26 @@ const CompMostrarRegistros = () => {
                                 <th>Fin</th>
                                 <th>Usuario que Activo</th>
                                 <th>DNI Paciente</th>
-                                <th>Id area</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {registros.map((registro) => (
-                                <tr key={registro.id}>
+                            {registros
+                                .filter((registro) => registro.id_areas == areaBuscada)
+                                .map((registro) => (
+                                    <tr key={registro.id}>
                                     <td>{registro.type}</td>
-                                    <td>{registro.status  == 1 ? 'En curso' : 'Atendida'}</td>
+                                    <td>{registro.status === 1 ? 'En curso' : 'Atendida'}</td>
                                     <td>{registro.start_hour}</td>
                                     <td>{registro.finish_hour}</td>
                                     <td>{getUsuarioNameById(registro.id_users)}</td>
                                     <td>{getPacienteDNIById(registro.id_pacient)}</td>
-                                    <td>{getAreaNameById(registro.id_areas)}</td>
-
                                     <td>
                                         <button onClick={() => deleteRegistro(registro.id)} className='btn btn-danger'><i className="fa-solid fa-trash"></i></button>
                                         <button onClick={() => updateRegistro(registro)} className='btn btn-warning'><i className="fa-solid fa-bell-slash"></i></button>
                                     </td>
-                                </tr>
-                            ))}
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </div>
@@ -120,4 +108,4 @@ const CompMostrarRegistros = () => {
     )
 }
 
-export default CompMostrarRegistros;
+export default CompFiltrarLlamadas;

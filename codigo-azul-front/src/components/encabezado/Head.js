@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from "./LOGOlogo.png";
 import "./header.css"
+import BotonVolver from '../BotonVolver';
 
 export default function Head() {
   return (
+    <>
     <div className='contain' style={{ padding: "2vh" }}>
       <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ padding: 0 }}>
         <div className="container-fluid">
@@ -31,5 +33,7 @@ export default function Head() {
         </div>
       </nav>
     </div>
+    <BotonVolver/>
+    </>
   )
 }

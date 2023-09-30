@@ -1,0 +1,14 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+.flex-container div {
+    width: 33%;
+}
+.flex-item {
+    text-align: center;
+    font-size: 2vh;
+    width: 33%;
+}
+  

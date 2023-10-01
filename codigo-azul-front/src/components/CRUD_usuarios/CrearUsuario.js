@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BotonVolver from '../BotonVolver'
 
 const URI = 'http://localhost:8000/usuarios/';
 
@@ -27,6 +28,7 @@ const CompCrearUsuario = () => {
 
     return (
         <div className="container">
+            <BotonVolver/>
             <h1>Crear registro</h1>
             <form onSubmit={guardar}>
                 <div className="mb-3">

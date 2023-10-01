@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import BotonVolver from '../BotonVolver'
 
 const URI = 'http://localhost:8000/usuarios/';
 
@@ -54,6 +55,7 @@ const CompEditarUsuario = () => {
 
     return (
         <div className="container">
+            <BotonVolver/>
             <h1>Editar registro</h1>
             <form onSubmit={editar}>
                 <div className="mb-3">

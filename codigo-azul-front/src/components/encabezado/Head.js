@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from "./LOGOlogo.png";
 import "./header.css"
-
 export default function Head() {
   return (
     <div className='contain' style={{ padding: "2vh" }}>

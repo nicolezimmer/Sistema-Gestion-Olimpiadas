@@ -24,7 +24,6 @@ import CompEditarArea from './components/CRUD_areas/EditarArea'
 
 import CompMostrarLlamadas from './components/CRUD_llamadas/MostrarLlamadas'
 
-import CompFiltrarLlamadas from './components/CRUD_llamadas/FiltrarLlamadas'
 
 import Head from './components/encabezado/Head.js'
 function App() {
@@ -52,7 +51,6 @@ function App() {
 
           {/* Crud llamadas */}
           <Route path='/llamadas/' element={<CompMostrarLlamadas/>}/>
-          <Route path='/llamadas/filtrar/area' element={<CompFiltrarLlamadas/>}/>
 
           {/* <Route path='/areas/editar/:id' element={<CompEditarArea/>}/>
           <Route path='/areas/crear/' element={<CompCrearArea/>}/> */}

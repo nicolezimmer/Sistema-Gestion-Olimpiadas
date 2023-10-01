@@ -20,7 +20,7 @@ export default function Head() {
                 <Link to={`/pacientes/`} className="nav-link">Pacientes</Link>
               </li>
               <li className="nav-item">
-                <Link to={`/pacientes/`} className="nav-link">Alertas</Link>
+                <Link to={`/llamadas/`} className="nav-link">Alertas</Link>
               </li>
               <li className="nav-item">
                 <Link to={`/areas/`} className="nav-link">Areas</Link>

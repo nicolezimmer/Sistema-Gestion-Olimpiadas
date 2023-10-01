@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Filtros = ({
   areas,
@@ -8,24 +8,15 @@ const Filtros = ({
   setAreaBuscada,
   setTipoBuscado,
   setEstadoBuscado,
-  fechaInicio,
-  setFechaInicio,
-  fechaFin,
-  setFechaFin
+  rangoFechaInicio,
+  setRangoFechaInicio,
+  rangoFechaFin,
+  setRangoFechaFin,
+  filtroFechaActivado,
+  setFiltroFechaActivado
 }) => {
-
-  
-    const handleFechaInicioChange = (e) => {
-      setFechaInicio(e.target.value);
-    };
-  
-    const handleFechaFinChange = (e) => {
-      setFechaFin(e.target.value);
-    };
   return (
     <div>
-
-
       <div className="mb-3">
         <label className="form-label">Filtrar por Tipo</label>
         <select
@@ -38,27 +29,40 @@ const Filtros = ({
           <option value="Normal">Normal</option>
         </select>
       </div>
+      <div>
       <div className="mb-3">
+        <label className="form-label">Activar Filtro por Fecha</label>
+        <input
+          type="checkbox"
+          checked={filtroFechaActivado}
+          onChange={() => setFiltroFechaActivado(!filtroFechaActivado)}
+          className="form-check-input"
+        />
+      </div>
+      {filtroFechaActivado && ( // Solo mostrar los campos de fecha si el filtro está activado
         <div className="mb-3">
+          <div className="mb-3">
             <label className="form-label">Fecha de Inicio</label>
             <input
-            type="date"
-            value={fechaInicio}
-            onChange={handleFechaInicioChange}
-            className="form-control"
+              type="datetime-local"
+              value={rangoFechaInicio}
+              onChange={(e) => setRangoFechaInicio(e.target.value)}
+              className="form-control"
             />
-        </div>
-
-        <div className="mb-3">
+          </div>
+          <div className="mb-3">
             <label className="form-label">Fecha de Fin</label>
             <input
-            type="date"
-            value={fechaFin}
-            onChange={handleFechaFinChange}
-            className="form-control"
+              type="datetime-local"
+              value={rangoFechaFin}
+              onChange={(e) => setRangoFechaFin(e.target.value)}
+              className="form-control"
             />
+          </div>
         </div>
-      </div>
+      )}
+
+    </div>
       <div className="mb-3">
         <label className="form-label">Filtrar por Estado</label>
         <select

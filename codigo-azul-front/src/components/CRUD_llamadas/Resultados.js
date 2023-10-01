@@ -1,4 +1,5 @@
 import React from 'react';
+import { format } from 'date-fns';
 
 const Resultados = ({
   registros,
@@ -10,7 +11,14 @@ const Resultados = ({
   getUsuarioNameById,
   getPacienteDNIById,
   getAreaNameById,
+  rangoFechaInicio,
+  rangoFechaFin,
+  filtroFechaActivado
 }) => {
+
+  const fechaInicio = new Date(rangoFechaInicio)
+  const fechaFin = new Date(rangoFechaFin)
+
   return (
     <div className="row">
       <div className="col">
@@ -50,12 +58,21 @@ const Resultados = ({
                   return registro.status === estadoBuscado
                 }
               })
+              .filter((registro) => {
+                if (!filtroFechaActivado) {
+                  return true
+                }
+                const startHour = new Date(registro.start_hour)
+                const finishHour = new Date(registro.finish_hour)
+                return startHour >= fechaInicio && finishHour <= fechaFin
+              })
+              
               .map((registro) => (
                 <tr key={registro.id}>
                   <td>{registro.type}</td>
                   <td>{registro.status === 1 ? 'En curso' : 'Atendida'}</td>
-                  <td>{registro.start_hour}</td>
-                  <td>{registro.finish_hour}</td>
+                  <td>{format(new Date(registro.start_hour), 'dd/MM/yyyy HH:mm')}</td>
+                  <td>{format(new Date(registro.finish_hour), 'dd/MM/yyyy HH:mm')}</td>
                   <td>{getUsuarioNameById(registro.id_users)}</td>
                   <td>{getPacienteDNIById(registro.id_pacient)}</td>
                   <td>{getAreaNameById(registro.id_areas)}</td>

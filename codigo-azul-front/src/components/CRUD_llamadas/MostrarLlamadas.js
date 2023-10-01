@@ -19,9 +19,9 @@ const CompFiltrarLlamadas = () => {
   const [estadoBuscado, setEstadoBuscado] = useState('');
   const [areas, setAreas] = useState([]);
 
-  const [fechaInicio, setFechaInicio] = useState(''); // Estado para la fecha de inicio
-  const [fechaFin, setFechaFin] = useState('');       // Estado para la fecha de fin
-
+  const [rangoFechaInicio, setRangoFechaInicio] = useState(''); 
+  const [rangoFechaFin, setRangoFechaFin] = useState(''); 
+  const [filtroFechaActivado, setFiltroFechaActivado] = useState(true);
   useEffect(() => {
     getRegistros();
     getUsuarios();
@@ -95,10 +95,12 @@ const CompFiltrarLlamadas = () => {
         setAreaBuscada={setAreaBuscada}
         setTipoBuscado={setTipoBuscado}
         setEstadoBuscado={setEstadoBuscado}
-        fechaInicio={fechaInicio}
-        setFechaInicio={setFechaInicio}
-        fechaFin={fechaFin}
-        setFechaFin={setFechaFin}
+        rangoFechaInicio={rangoFechaInicio}
+        setRangoFechaInicio={setRangoFechaInicio}
+        rangoFechaFin={rangoFechaFin}
+        setRangoFechaFin={setRangoFechaFin}
+        filtroFechaActivado={filtroFechaActivado}
+        setFiltroFechaActivado={setFiltroFechaActivado}
       />
       <Resultados
         registros={registros}
@@ -110,6 +112,9 @@ const CompFiltrarLlamadas = () => {
         getUsuarioNameById={getUsuarioNameById}
         getPacienteDNIById={getPacienteDNIById}
         getAreaNameById={getAreaNameById}
+        rangoFechaInicio={rangoFechaInicio}
+        rangoFechaFin={rangoFechaFin}
+        filtroFechaActivado={filtroFechaActivado}
       />
     </div>
   );

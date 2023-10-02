@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import {Document, Page, View, PDFDownloadLink} from "@react-pdf/renderer"
+import React, {useState, useEffect} from 'react'
+import "./graficos.css"
+import { GraBarras } from '../../CRUD_llamadas/GraBarras'
+import { GraLineas } from '../../CRUD_llamadas/GraLineas'
+import { GraTorta } from '../../CRUD_llamadas/GraTorta'
+import Filtros from '../../CRUD_llamadas/Filtros'
+import Resultados from '../../CRUD_llamadas/Resultados'
 import axios from 'axios'
 import moment from 'moment'
-import Filtros from './Filtros'
-import Resultados from './Resultados'
 
-const URI = 'http://localhost:8000/llamadas/'
-const URIusuario = 'http://localhost:8000/usuarios/'
-const URIpaciente = 'http://localhost:8000/pacientes/'
-const URIarea = 'http://localhost:8000/areas/'
+const Graficos = () => {
+  
+  const URI = 'http://localhost:8000/llamadas/'
+  const URIusuario = 'http://localhost:8000/usuarios/'
+  const URIpaciente = 'http://localhost:8000/pacientes/'
+  const URIarea = 'http://localhost:8000/areas/'
 
-const CompFiltrarLlamadas = () => {
   const [registros, setRegistros] = useState([]);
   const [updateStatus, setUpdateStatus] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
@@ -138,41 +142,20 @@ const CompFiltrarLlamadas = () => {
       console.log('Llamada cortada');
     }
   };
-
   return (
-    <div className="container">
-
-      <Document>
-        <Page size="A4">
-
-          <Filtros
-            areas={areas}
-            areaBuscada={areaBuscada}
-            tipoBuscado={tipoBuscado}
-            estadoBuscado={estadoBuscado}
-            setAreaBuscada={setAreaBuscada}
-            setTipoBuscado={setTipoBuscado}
-            setEstadoBuscado={setEstadoBuscado}
-            rangoFechaInicio={rangoFechaInicio}
-            setRangoFechaInicio={setRangoFechaInicio}
-            rangoFechaFin={rangoFechaFin}
-            setRangoFechaFin={setRangoFechaFin}
-            filtroFechaActivado={filtroFechaActivado}
-            setFiltroFechaActivado={setFiltroFechaActivado}
+    <div className='flex-container'>
+        <GraBarras
+            registrosFiltrados={registrosFiltrados}
+            areasParaGraficar={areasParaGraficar}
           />
-          <Resultados
-            deleteRegistro={deleteRegistro}
-            updateRegistro={updateRegistro}
-            getUsuarioNameById={getUsuarioNameById}
-            getPacienteDNIById={getPacienteDNIById}
-            getAreaNameById={getAreaNameById}
+          <GraLineas
             registrosFiltrados={registrosFiltrados}
           />
-
-          </Page>
-      </Document>
+          <GraTorta
+            registrosFiltrados={registrosFiltrados}
+          />
     </div>
-  );
-};
+  )
+}
 
-export default CompFiltrarLlamadas;
+export default Graficos;

@@ -37,6 +37,15 @@ export const CodigoAzul = () => {
       id_areas: id_areas,
     });
     navigate('/llamadas');
+
+    try {
+      await axios.put(`${URIpaciente}${getPacienteIdByDNI(pacienteDNI)}`, {
+        id_areas: id_areas,
+      });
+      console.log('Paciente actualizado con éxito.');
+    } catch (error) {
+      console.error('Error al actualizar el paciente:', error);
+    }
   };
   
   const getPacientes = async () => {

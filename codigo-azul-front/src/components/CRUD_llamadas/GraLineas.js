@@ -44,7 +44,6 @@ export const GraLineas = ({
     }
     return null;
   };
-  
 
   return (
     <div className='flex-item'>
@@ -62,7 +61,7 @@ export const GraLineas = ({
 
       </ResponsiveContainer>
 
-      <p>Promedio de Tiempo de Respuesta: {promedioTiempoRespuesta} minutos</p>
+      <p>Promedio de Tiempo de Respuesta: {promedioTiempoRespuesta.toFixed(2)} minutos</p>
 
     </div>
   )

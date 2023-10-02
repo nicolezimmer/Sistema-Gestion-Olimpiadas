@@ -21,6 +21,7 @@ import CompCrearArea from './components/CRUD_areas/CrearArea';
 import CompEditarArea from './components/CRUD_areas/EditarArea';
 
 import CompMostrarLlamadas from './components/CRUD_llamadas/MostrarLlamadas';
+import CompMostrarEstadisticas from './components/Estadisticas/MostrarEstadisticas';
 import Head from './components/encabezado/Head';
 import { useAuth } from './components/Context/AuthContext';
 
@@ -56,6 +57,7 @@ function App() {
 
               {/* Crud llamadas */}
               <Route path='/llamadas/' element={<CompMostrarLlamadas />} />
+              <Route path='/llamadas/estadisticas' element={<CompMostrarEstadisticas />} />
 
               <Route path='/codigo-azul/' element={<CodigoAzul/>} />
 

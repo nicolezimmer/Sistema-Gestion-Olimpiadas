@@ -1,0 +1,62 @@
+/* Anula los estilos del archivo reboot.scss para button, input, optgroup, select y textarea */
+button{
+    margin: 10px !important;
+}
+input, optgroup, select, textarea {
+    margin: 6px !important; /* Importante para anular estilos previos */
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+  
+  /* Resto de tus estilos para el contenedor principal */
+  .parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #fff;
+  }
+  
+  /* Estilos para el título */
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #0E6AB0;
+  }
+  
+  /* Estilos para los campos de entrada */
+  input {
+    width: 20%;
+    height: 40px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 0; /* Reducido el espacio entre los input a 5px */
+  }
+  
+  /* Estilos para el botón de inicio de sesión */
+  button {
+    background-color: #0E6AB0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+  }
+  
+  button:hover {
+    background-color: #095c98;
+  }
+  
+  /* Estilos para el mensaje de error */
+  p {
+    color: red;
+    margin-top: 10px;
+  }
+  

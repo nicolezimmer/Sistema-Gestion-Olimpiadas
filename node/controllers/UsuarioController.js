@@ -1,6 +1,28 @@
 // Importar modelo
 import UsuarioModel from "../models/UsuarioModel.js";
 
+// Lógica de inicio de sesión
+export const login = async (req, res) => {
+    const { username, passwd } = req.body;
+  
+    try {
+      // Busca al usuario por nombre de usuario y contraseña
+      const user = await UsuarioModel.findOne({ where: { username, passwd } });
+  
+      if (user) {
+        // Usuario autenticado con éxito
+        console.log("Usuario autenticado")
+        res.json({ success: true, user });
+      } else {
+        // Credenciales incorrectas
+        res.json({ success: false, message: 'Credenciales incorrectas.' });
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      res.status(500).json({ success: false, message: 'Error al iniciar sesión. Inténtalo de nuevo más tarde.' });
+    }
+};
+
 // Mostrar todos los usuarios
 export const getAllUsuarios = async (req, res) => {
     try {

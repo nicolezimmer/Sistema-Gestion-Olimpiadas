@@ -6,6 +6,9 @@ import * as LlamadaController from '../controllers/LlamadaController.js';
 
 const router = express.Router();
 
+// Ruta para login
+router.post("/login", UsuarioController.login);
+
 // Rutas para los usuarios
 router.get("/usuarios", UsuarioController.getAllUsuarios);
 router.get("/usuarios/:id", UsuarioController.getUsuarioById);

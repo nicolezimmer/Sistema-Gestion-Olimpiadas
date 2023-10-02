@@ -24,7 +24,7 @@ import CompEditarArea from './components/CRUD_areas/EditarArea'
 
 import CompMostrarLlamadas from './components/CRUD_llamadas/MostrarLlamadas'
 
-import MostrarEstadisticas from './components/Estadisticas/MostrarEstadisticas'
+// import MostrarEstadisticas from './components/Estadisticas/MostrarEstadisticas'
 
 import Head from './components/encabezado/Head.js'
 function App() {
@@ -53,7 +53,6 @@ function App() {
           {/* Crud llamadas */}
           <Route path='/llamadas/' element={<CompMostrarLlamadas/>}/>
 
-          <Route path='/estadisticas/' element={<MostrarEstadisticas/>}/>
 
 
         </Routes>

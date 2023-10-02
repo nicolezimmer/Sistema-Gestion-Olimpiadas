@@ -39,7 +39,7 @@ const Filtros = ({
           className="form-check-input"
         />
       </div>
-      {filtroFechaActivado && ( // Solo mostrar los campos de fecha si el filtro está activado
+      {filtroFechaActivado && ( 
         <div className="mb-3">
           <div className="mb-3">
             <label className="form-label">Fecha de Inicio</label>

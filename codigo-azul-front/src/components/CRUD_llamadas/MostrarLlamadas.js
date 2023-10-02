@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import {Document, Page, View, PDFDownloadLink} from "@react-pdf/renderer"
 import axios from 'axios'
 import moment from 'moment'
 import Filtros from './Filtros'
@@ -145,8 +144,6 @@ const CompFiltrarLlamadas = () => {
   return (
     <div className="container">
 
-      <Document>
-        <Page size="A4">
 
           <Filtros
             areas={areas}
@@ -186,9 +183,6 @@ const CompFiltrarLlamadas = () => {
           />
           </div>
 
-
-          </Page>
-      </Document>
     </div>
   );
 };

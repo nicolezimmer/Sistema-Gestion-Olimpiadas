@@ -1,85 +1,110 @@
-import React, { useState } from 'react';
-import ZonePicker from './ZonePicker';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import moment from 'moment';
+import boton from './boton.png';
+import { useNavigate } from "react-router-dom";
 
 export const CodigoAzul = ({ user }) => {
-  const [showForm, setShowForm] = useState(false);
-  const [selectedZone, setSelectedZone] = useState('');
-  const [selectedCallType, setSelectedCallType] = useState('');
-  const [textInputValue, setTextInputValue] = useState('');
+  const URI = 'http://localhost:8000/llamadas/';
+  const URIpaciente = 'http://localhost:8000/pacientes/';
+  const URIarea = 'http://localhost:8000/areas/';
 
-  const handleButtonPress = async () => {
-    if (!showForm) {
-      setShowForm(true);
-    } else {
-      // Realizar la solicitud de creación de llamada aquí
-      try {
-        const formData = {
-          selectedCallType,
-          textInputValue,
-          user,
-          selectedZone,
-        };
+  const [pacientes, setPacientes] = useState([]);
+  const [areas, setAreas] = useState([]); 
+  const [type, setType] = useState("");
+  const [id_pacient, setId_pacient] = useState(null);
+  const [id_areas, setId_areas] = useState(null);
+  const [pacienteDNI, setPacienteDNI]= useState('');
 
-        const response = await fetch('http://localhost:8000/boton', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+  const navigate = useNavigate()
 
-        if (response.ok) {
-          // Llamada registrada con éxito, puedes realizar acciones adicionales aquí
-          setShowForm(false);
-          setSelectedZone('');
-          setSelectedCallType('');
-          setTextInputValue('');
-        } else {
-          // Manejar el error aquí, por ejemplo, mostrar un mensaje de error
-          const data = await response.json();
-          alert('Error', data.message);
-        }
-      } catch (error) {
-        console.error('Error al enviar el formulario:', error);
-        alert('Error', 'Hubo un problema al registrar la llamada');
-      }
+  useEffect(() => {
+    getPacientes();
+    getAreas();
+    
+  }, []);
+  
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+      await axios.post(URI, {
+        type: type,
+        status: 1,
+        start_hour: moment().format('YYYY-MM-DD HH:mm:ss'),
+        id_users: 32,
+        id_pacient: getPacienteIdByDNI(pacienteDNI),
+        id_areas: id_areas
+      });
+      navigate ('/llamadas')
+
+  };
+
+  const getPacientes = async () => {
+    try {
+      const res = await axios.get(URIpaciente);
+      setPacientes(res.data);
+    } catch (error) {
+      console.error("Error al obtener pacientes:", error);
     }
   };
 
-  const handleImagePress = () => {
-    setShowForm(!showForm);
+  const getAreas = async () => {
+    try {
+      const res = await axios.get(URIarea);
+      setAreas(res.data);
+    } catch (error) {
+      console.error("Error al obtener áreas:", error);
+    }
+  };
+
+  const getPacienteIdByDNI = (pacienteDNI) => {
+    const paciente = pacientes.find((a) => a.DNI === pacienteDNI);
+    return paciente ? paciente.id : '';
   };
 
   return (
     <div className="container">
-      <button className="button" onClick={handleImagePress}>
-        <img src="./boton.png" alt="Botón" />
-      </button>
-
-      {showForm && (
-        <div className="form">
-          <ZonePicker selectedZone={selectedZone} onZoneChange={setSelectedZone} />
-          <label className="common-text">Selecciona el tipo de llamado:</label>
-          <select value={selectedCallType} onChange={(e) => setSelectedCallType(e.target.value)}>
-            <option value="">-----</option>
-            <option value="Normal">Normal</option>
+      <h2>Activar Codigo Azul</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label">Tipo</label>
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="form-select"
+          >
+            <option value="">Seleccione tipo de llamado </option>
             <option value="Emergencia">Emergencia</option>
+            <option value="Normal">Normal</option>
           </select>
-
-          <input
-            placeholder="DNI paciente"
-            className="input"
-            type="text"
-            value={textInputValue}
-            onChange={(e) => setTextInputValue(e.target.value)}
-            maxLength="8"
-          />
-
-          <button className="activate-button" onClick={handleButtonPress}>
-            Activar
-          </button>
         </div>
-      )}
+        <div className="mb-3">
+          <label className="form-label">DNI Paciente</label>
+          <input
+            value={pacienteDNI}
+            onChange={(e) => setPacienteDNI(e.target.value)}
+            type="text"
+            className="form-control"
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Área</label>
+          <select
+            value={id_areas}
+            onChange={(e) => setId_areas(e.target.value)}
+            className="form-select"
+          >
+            <option value="">Seleccione un área</option>
+            {areas.map((area) => (
+              <option key={area.id} value={area.id}>
+                {area.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary"><i className="fa-solid fa-floppy-disk"></i></button>
+      </form>
     </div>
   );
 };

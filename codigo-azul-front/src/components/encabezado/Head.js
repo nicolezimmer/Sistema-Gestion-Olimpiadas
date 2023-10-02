@@ -25,6 +25,9 @@ export default function Head() {
               <li className="nav-item">
                 <Link to={`/areas/`} className="nav-link">Areas</Link>
               </li>
+              <li className="nav-item">
+                <Link to={`/codigo-azul/`} className="nav-link">Codigo-Azul</Link>
+              </li>
             </ul>
           </div>
         </div>

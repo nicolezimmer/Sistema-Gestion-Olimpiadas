@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {Document, Page, View, PDFDownloadLink} from "@react-pdf/renderer"
 import axios from 'axios'
 import moment from 'moment'
 import Filtros from './Filtros'
@@ -25,7 +26,7 @@ const CompFiltrarLlamadas = () => {
 
   const [rangoFechaInicio, setRangoFechaInicio] = useState(''); 
   const [rangoFechaFin, setRangoFechaFin] = useState(''); 
-  const [filtroFechaActivado, setFiltroFechaActivado] = useState(true);
+  const [filtroFechaActivado, setFiltroFechaActivado] = useState(false);
 
   const [registrosFiltrados, setRegistrosFiltrados] = useState([]);
 
@@ -143,44 +144,51 @@ const CompFiltrarLlamadas = () => {
 
   return (
     <div className="container">
-      <Filtros
-        areas={areas}
-        areaBuscada={areaBuscada}
-        tipoBuscado={tipoBuscado}
-        estadoBuscado={estadoBuscado}
-        setAreaBuscada={setAreaBuscada}
-        setTipoBuscado={setTipoBuscado}
-        setEstadoBuscado={setEstadoBuscado}
-        rangoFechaInicio={rangoFechaInicio}
-        setRangoFechaInicio={setRangoFechaInicio}
-        rangoFechaFin={rangoFechaFin}
-        setRangoFechaFin={setRangoFechaFin}
-        filtroFechaActivado={filtroFechaActivado}
-        setFiltroFechaActivado={setFiltroFechaActivado}
-      />
-      <Resultados
-        deleteRegistro={deleteRegistro}
-        updateRegistro={updateRegistro}
-        getUsuarioNameById={getUsuarioNameById}
-        getPacienteDNIById={getPacienteDNIById}
-        getAreaNameById={getAreaNameById}
-        registrosFiltrados={registrosFiltrados}
-      />
-      <div>
-      <GraBarras
-        registrosFiltrados={registrosFiltrados}
-        areasParaGraficar={areasParaGraficar}
 
-      />
-      <GraLineas
-        registrosFiltrados={registrosFiltrados}
-      />
-      <GraTorta
-        registrosFiltrados={registrosFiltrados}
+      <Document>
+        <Page size="A4">
 
-      />
-      </div>
+          <Filtros
+            areas={areas}
+            areaBuscada={areaBuscada}
+            tipoBuscado={tipoBuscado}
+            estadoBuscado={estadoBuscado}
+            setAreaBuscada={setAreaBuscada}
+            setTipoBuscado={setTipoBuscado}
+            setEstadoBuscado={setEstadoBuscado}
+            rangoFechaInicio={rangoFechaInicio}
+            setRangoFechaInicio={setRangoFechaInicio}
+            rangoFechaFin={rangoFechaFin}
+            setRangoFechaFin={setRangoFechaFin}
+            filtroFechaActivado={filtroFechaActivado}
+            setFiltroFechaActivado={setFiltroFechaActivado}
+          />
+          <Resultados
+            deleteRegistro={deleteRegistro}
+            updateRegistro={updateRegistro}
+            getUsuarioNameById={getUsuarioNameById}
+            getPacienteDNIById={getPacienteDNIById}
+            getAreaNameById={getAreaNameById}
+            registrosFiltrados={registrosFiltrados}
+          />
+          <div>
+          <GraBarras
+            registrosFiltrados={registrosFiltrados}
+            areasParaGraficar={areasParaGraficar}
 
+          />
+          <GraLineas
+            registrosFiltrados={registrosFiltrados}
+          />
+          <GraTorta
+            registrosFiltrados={registrosFiltrados}
+
+          />
+          </div>
+
+
+          </Page>
+      </Document>
     </div>
   );
 };

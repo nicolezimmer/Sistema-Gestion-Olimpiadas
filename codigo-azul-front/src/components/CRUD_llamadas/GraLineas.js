@@ -7,20 +7,19 @@ export const GraLineas = ({
   const [promedioTiempoRespuesta, setPromedioTiempoRespuesta] = useState(0);
 
   useEffect(() => {
-    sacarPromedio(registrosFiltrados);
+    sacarPromedio();
 
-  }, []);
+  }, [registrosFiltrados]);
 
-  const sacarPromedio = async (registrosFiltrados) => {
-
-  
-    const tiempoTotal = registrosFiltrados.reduce((total, registro) => {
-      return total + calcularTiempoDeRespuesta(registro)
+  const sacarPromedio =  () => {
+    const tiempoTotal =  registrosFiltrados.reduce((total, registro) => {
+      return total +  calcularTiempoDeRespuesta(registro);
     }, 0)
   
-    const promedio = tiempoTotal / registrosFiltrados.length;
-    setPromedioTiempoRespuesta(promedio)
+    const promedio =  tiempoTotal / registrosFiltrados.length;
+     setPromedioTiempoRespuesta(promedio)
   }
+  
   
 
   const calcularTiempoDeRespuesta = (llamada) => {

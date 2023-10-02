@@ -13,7 +13,6 @@ const CompCrearRegistro = () => {
     const navigate = useNavigate()
 
     const guardar = async (e) => {
-        //esto es para evitar el submit que hace el formulario
         e.preventDefault()
         await axios.post(URI, {name: name, description: description})
         navigate ('/areas')

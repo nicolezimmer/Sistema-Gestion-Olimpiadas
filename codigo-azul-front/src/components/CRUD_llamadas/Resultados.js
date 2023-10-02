@@ -29,7 +29,7 @@ const Resultados = ({
             {registrosFiltrados.map((registro) => (
               <tr key={registro.id}>
                 <td>{registro.type}</td>
-                <td>{registro.status === 1 ? 'En curso' : 'Atendida'}</td>
+                <td>{registro.status == 1 ? 'En curso' : 'Atendida'}</td>
                 <td>{format(new Date(registro.start_hour), 'dd/MM/yyyy HH:mm')}</td>
                 <td>{format(new Date(registro.finish_hour), 'dd/MM/yyyy HH:mm')}</td>
                 <td>{getUsuarioNameById(registro.id_users)}</td>

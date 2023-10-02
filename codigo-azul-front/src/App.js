@@ -24,6 +24,8 @@ import CompMostrarLlamadas from './components/CRUD_llamadas/MostrarLlamadas';
 import Head from './components/encabezado/Head';
 import { useAuth } from './components/Context/AuthContext';
 
+import { CodigoAzul } from './components/BotonLlamada/Codigo_azul';
+
 function App() {
   const { user } = useAuth();
   const isLoginPage = window.location.pathname === "/login";
@@ -54,6 +56,9 @@ function App() {
 
               {/* Crud llamadas */}
               <Route path='/llamadas/' element={<CompMostrarLlamadas />} />
+
+              <Route path='/codigo-azul/' element={<CodigoAzul/>} />
+
             </>
           ) : (
             <Route path="/*" element={<Navigate to="/login" />} />

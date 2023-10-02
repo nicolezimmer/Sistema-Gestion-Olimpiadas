@@ -12,6 +12,19 @@ export const getAllAreas = async (req, res) => {
     }
 }
 
+// Mostrar todos los names de areas
+export const getAllAreaNames = async (req, res) => {
+    try {
+      const areas = await AreaModel.findAll({
+        attributes: ['name'],
+      });
+      const areaNames = areas.map((area) => area.name);
+      res.json(areaNames);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
 // Mostrar un área por ID
 export const getAreaById = async (req, res) => {
     try {
@@ -25,7 +38,7 @@ export const getAreaById = async (req, res) => {
         res.json({ message: error.message });
     }
 }
-// Mostrar un área por ID
+// Mostrar un área por name
 export const getAreaByName = async (req, res) => {
     try {
         const area = await AreaModel.findOne({

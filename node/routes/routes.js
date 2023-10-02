@@ -6,7 +6,7 @@ import * as LlamadaController from '../controllers/LlamadaController.js';
 
 const router = express.Router();
 
-// Routa para login
+// Ruta para login
 router.post("/login", UsuarioController.login);
 
 // Rutas para los usuarios
@@ -36,7 +36,6 @@ router.delete('/areas/:id', AreaController.deleteAreaById);
 router.get("/llamadas", LlamadaController.getAllLlamadas);
 router.get("/llamadas/:id", LlamadaController.getLlamadaById);
 router.post("/llamadas", LlamadaController.createLlamada);
-router.post("llamadas/boton", LlamadaController.createLlamadaBoton);
 router.put("/llamadas/:id", LlamadaController.updateLlamadaById);
 router.delete("/llamadas/:id", LlamadaController.deleteLlamadaById);
 

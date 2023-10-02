@@ -1,0 +1,20 @@
+parent{
+    display: flex;
+    justify-content: 'center';
+    align-items: 'center';
+    background-color: '#fff';
+}
+
+inputt{
+    width: 80%;
+    height: 40;
+    background-color: '#fff';
+    margin-bottom: 10;
+    padding-left: 5;
+    padding-right: 5;
+    border-radius: 5;   
+}
+
+btn{
+    color: #0E6AB0;
+}

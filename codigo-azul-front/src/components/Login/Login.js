@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext"; // Importa el contexto de autenticación
+import "./Login.css"
 
 function Login() {
   const { login } = useAuth();
@@ -38,7 +39,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="parent">
       <h1>Iniciar Sesión</h1>
       <input
         type="text"

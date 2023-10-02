@@ -1,20 +1,49 @@
-parent{
+/* Estilos para el contenedor principal */
+.parent {
     display: flex;
-    justify-content: 'center';
-    align-items: 'center';
-    background-color: '#fff';
-}
-
-inputt{
-    width: 80%;
-    height: 40;
-    background-color: '#fff';
-    margin-bottom: 10;
-    padding-left: 5;
-    padding-right: 5;
-    border-radius: 5;   
-}
-
-btn{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Ajusta la altura según tu diseño */
+    background-color: #fff;
+  }
+  
+  /* Estilos para el título */
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
     color: #0E6AB0;
-}
+  }
+  
+  /* Estilos para los campos de entrada */
+  input {
+    width: 20%;
+    height: 40px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Puedes personalizar el borde según tus preferencias */
+  }
+  
+  /* Estilos para el botón de inicio de sesión */
+  button {
+    background-color: #0E6AB0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #095c98; /* Cambia el color al pasar el mouse por encima */
+  }
+  
+  /* Estilos para el mensaje de error */
+  p {
+    color: red;
+    margin-top: 10px;
+  }

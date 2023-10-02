@@ -1,45 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import moment from 'moment';
-import boton from './boton.png';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
 
-export const CodigoAzul = ({ user }) => {
+export const CodigoAzul = () => {
   const URI = 'http://localhost:8000/llamadas/';
   const URIpaciente = 'http://localhost:8000/pacientes/';
   const URIarea = 'http://localhost:8000/areas/';
 
+  const { user } = useAuth();
   const [pacientes, setPacientes] = useState([]);
   const [areas, setAreas] = useState([]); 
   const [type, setType] = useState("");
-  const [id_pacient, setId_pacient] = useState(null);
   const [id_areas, setId_areas] = useState(null);
   const [pacienteDNI, setPacienteDNI]= useState('');
 
   const navigate = useNavigate()
 
-  useEffect(() => {
+  useEffect(() => {  
     getPacientes();
     getAreas();
     
   }, []);
   
   const handleSubmit = async (e) => {
-
     e.preventDefault();
+    const userId = user.id
 
-      await axios.post(URI, {
-        type: type,
-        status: 1,
-        start_hour: moment().format('YYYY-MM-DD HH:mm:ss'),
-        id_users: 32,
-        id_pacient: getPacienteIdByDNI(pacienteDNI),
-        id_areas: id_areas
-      });
-      navigate ('/llamadas')
-
+    await axios.post(URI, {
+      type: type,
+      status: 1,
+      start_hour: moment().format('YYYY-MM-DD HH:mm:ss'),
+      id_users: userId, // Usar userId aquí
+      id_pacient: getPacienteIdByDNI(pacienteDNI),
+      id_areas: id_areas,
+    });
+    navigate('/llamadas');
   };
-
+  
   const getPacientes = async () => {
     try {
       const res = await axios.get(URIpaciente);

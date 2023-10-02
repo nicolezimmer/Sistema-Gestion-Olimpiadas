@@ -7,7 +7,6 @@ export const Home = ({ user }) => {
   return (
     <>
 
-
       <div className="main">
         <div></div>
         <Link to={`/usuarios/`} className='hom usu'></Link>
@@ -20,7 +19,5 @@ export const Home = ({ user }) => {
     </>
   )
 }
-
-
 
 export default Home

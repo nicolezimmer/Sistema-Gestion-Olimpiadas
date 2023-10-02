@@ -1,6 +1,19 @@
 // Importar modelo
 import AreaModel from "../models/AreaModel.js";
 
+
+// Mostrar todas las áreas
+export const getAllAreas = async (req, res) => {
+    try {
+        // .findAll() trae todos los registros del modelo
+        const areas = await AreaModel.findAll();
+        res.json(areas);
+    } catch (error) {
+        res.json({ message: error.message });
+    }
+}
+
+// Mostrar todos los names de areas
 export const getAllAreaNames = async (req, res) => {
     try {
       const areas = await AreaModel.findAll({
@@ -12,16 +25,6 @@ export const getAllAreaNames = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
-// Mostrar todas las áreas
-export const getAllAreas = async (req, res) => {
-    try {
-        // .findAll() trae todos los registros del modelo
-        const areas = await AreaModel.findAll();
-        res.json(areas);
-    } catch (error) {
-        res.json({ message: error.message });
-    }
-}
 
 // Mostrar un área por ID
 export const getAreaById = async (req, res) => {
@@ -36,7 +39,7 @@ export const getAreaById = async (req, res) => {
         res.json({ message: error.message });
     }
 }
-// Mostrar un área por ID
+// Mostrar un área por name
 export const getAreaByName = async (req, res) => {
     try {
         const area = await AreaModel.findOne({

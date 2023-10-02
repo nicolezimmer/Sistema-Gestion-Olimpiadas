@@ -2,9 +2,10 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './home.css';
 
-export const Home = ({ user }) => {
+export const Home = () => {
   return (
     <>
+
 
       <div className="main">
         <div></div>
@@ -17,5 +18,7 @@ export const Home = ({ user }) => {
     </>
   )
 }
+
+
 
 export default Home

@@ -8,8 +8,13 @@
 .main{
     display: grid;
     position: relative;
+    background-image: url('iconos/fondo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 150vh;
+    background-color: #caf0f8;
     padding-right: 15px;
-    min-height: 80vh;
+    height: 84.5vh;
     grid-template-columns: auto repeat(4, 27.7vh) auto;
     grid-template-rows: auto repeat(2, 27.5vh) auto;
 }
@@ -17,13 +22,12 @@
 .hom{
     position: relative;
     margin-top: -4.8%;
-    border-radius: 3vh;
+    border-radius: 2vh;
     height: 27.5vh;
     background-color: #244CDA;
     transition: transform 0.3s ease;
     background-size: cover;
     background-position: center center;
-    z-index: 10;
 }
 .hom:hover{
     transform: scale(0.95);

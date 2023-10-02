@@ -4,13 +4,36 @@
 }
 
 .container-fluid{
-    background-color: #C0CEFF;
+    background-color: #1976D2;
 }
 .contain{
-    background-color: #C0CEFF;
+    background-color: #1976D2;
 }
 
 
 #logo{
     width: 20vh;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+}
+  
+.contain {
+    margin: 0;
+    padding: 0;
+    height: 15.5vh;
+}
+.nav-link{
+    text-align: center;
+    color: black;
+}
+.nav-link:hover{
+    text-align: center;
+    
+    filter: brightness(90%);
+    border-radius: 0.5vh;
+    color: #fff;
+    background-color: #1976D2;
 }

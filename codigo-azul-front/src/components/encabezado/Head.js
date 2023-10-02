@@ -1,37 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from "./LOGOlogo.png";
+import logo from "./LOGO.png";
 import "./header.css"
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
 export default function Head() {
   return (
-    <div className='contain' style={{ padding: "2vh" }}>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ padding: 0 }}>
-        <div className="container-fluid">
-          <Link className="navbar-brand" to={`/`}><img id='logo' src={logo} alt='logo'></img></Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" style={{fontSize:'3vh'}} id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to={`/usuarios/`} className="nav-link" aria-current="page">Usuarios</Link>
-              </li>
-              <li className="nav-item">
-                <Link to={`/pacientes/`} className="nav-link">Pacientes</Link>
-              </li>
-              <li className="nav-item">
-                <Link to={`/llamadas/`} className="nav-link">Alertas</Link>
-              </li>
-              <li className="nav-item">
-                <Link to={`/areas/`} className="nav-link">Areas</Link>
-              </li>
-              <li className="nav-item">
-                <Link to={`/codigo-azul/`} className="nav-link">Codigo-Azul</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className='contain' style={{position:'relative',zIndex:"1",}}>
+      <Navbar bg="light" expand="lg" style={{padding:0,}}>
+        <Container fluid>
+          <Navbar.Brand as={Link} to={`/`}><img id='logo' src={logo} alt='logo'></img></Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarNav" />
+          <Navbar.Collapse id="navbarNav">
+            <Nav className="mx-auto">
+              <Nav.Link as={Link} to={`/usuarios/`}>Usuarios</Nav.Link>
+              <Nav.Link as={Link} to={`/pacientes/`}>Pacientes</Nav.Link>
+              <Nav.Link as={Link} to={`/llamadas/`}>Alertas</Nav.Link>
+              <Nav.Link as={Link} to={`/areas/`}>Areas</Nav.Link>    
+              <Nav.Link as={Link} to={`/codigo-azul/`}>Codigo-Azul</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   )
 }
+

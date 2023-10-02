@@ -83,7 +83,7 @@ export const CodigoAzul = () => {
           <input
             value={pacienteDNI}
             onChange={(e) => setPacienteDNI(e.target.value)}
-            type="text"
+            type="number"
             className="form-control"
           />
         </div>

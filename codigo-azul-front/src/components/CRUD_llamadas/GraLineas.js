@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis, LineChart, Line } from 'recharts';
 
 export const GraLineas = ({
@@ -9,6 +8,7 @@ export const GraLineas = ({
 
   useEffect(() => {
     sacarPromedio(registrosFiltrados);
+
   }, []);
 
   const sacarPromedio = async (registrosFiltrados) => {
@@ -62,6 +62,7 @@ export const GraLineas = ({
         </LineChart>
 
       </ResponsiveContainer>
+
       <p>Promedio de Tiempo de Respuesta: {promedioTiempoRespuesta} minutos</p>
 
     </div>

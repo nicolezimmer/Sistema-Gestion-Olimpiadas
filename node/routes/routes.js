@@ -4,6 +4,8 @@ import * as PacienteController from '../controllers/PacienteController.js';
 import * as AreaController from '../controllers/AreaController.js';
 import * as LlamadaController from '../controllers/LlamadaController.js';
 
+import * as BotonController from '../controllers/BotonController.js';
+
 const router = express.Router();
 
 // Ruta para login
@@ -38,5 +40,9 @@ router.get("/llamadas/:id", LlamadaController.getLlamadaById);
 router.post("/llamadas", LlamadaController.createLlamada);
 router.put("/llamadas/:id", LlamadaController.updateLlamadaById);
 router.delete("/llamadas/:id", LlamadaController.deleteLlamadaById);
+
+// Ruta para llamadas desde el boton
+router.post("/boton", BotonController.createLlamadaBoton)
+router.get('/areas/all-names', AreaController.getAllAreaNames);
 
 export default router;

@@ -1,6 +1,17 @@
 // Importar modelo
 import AreaModel from "../models/AreaModel.js";
 
+export const getAllAreaNames = async (req, res) => {
+    try {
+      const areas = await AreaModel.findAll({
+        attributes: ['name'],
+      });
+      const areaNames = areas.map((area) => area.name);
+      res.json(areaNames);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 // Mostrar todas las áreas
 export const getAllAreas = async (req, res) => {
     try {

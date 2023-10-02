@@ -5,6 +5,7 @@ import Filtros from './Filtros'
 import Resultados from './Resultados'
 import { GraLineas } from './GraLineas'
 import { GraBarras } from './GraBarras'
+import { GraTorta } from './GraTorta'
 
 const URI = 'http://localhost:8000/llamadas/'
 const URIusuario = 'http://localhost:8000/usuarios/'
@@ -173,6 +174,10 @@ const CompFiltrarLlamadas = () => {
       />
       <GraLineas
         registrosFiltrados={registrosFiltrados}
+      />
+      <GraTorta
+        registrosFiltrados={registrosFiltrados}
+
       />
       </div>
 

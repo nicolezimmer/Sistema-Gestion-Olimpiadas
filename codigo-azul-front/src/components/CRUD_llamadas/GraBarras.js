@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
-// const URIllamada = 'http://localhost:8000/llamadas/';
-// const URIarea = 'http://localhost:8000/areas/';
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -43,7 +40,6 @@ export const GraBarras = ({
     return contador;
   };
 
-  console.log(areasParaGraficar)
   const datosParaGrafico = () => {
     return areasParaGraficar.map(area => ({
       NombreArea: area.name,

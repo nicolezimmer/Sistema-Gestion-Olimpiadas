@@ -19,7 +19,7 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-export const GraTorta = () => {
+export const GraTorta = ({}) => {
   return (
     <div className='flex-item'>
         <p>Tipo de alertas de la ultima semana</p>

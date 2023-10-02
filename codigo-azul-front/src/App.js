@@ -24,12 +24,6 @@ import CompMostrarLlamadas from './components/CRUD_llamadas/MostrarLlamadas';
 import Head from './components/encabezado/Head';
 import { useAuth } from './components/Context/AuthContext';
 
-<<<<<<< HEAD
-// import MostrarEstadisticas from './components/Estadisticas/MostrarEstadisticas'
-
-import Head from './components/encabezado/Head.js'
-=======
->>>>>>> Dami
 function App() {
   const { user } = useAuth();
   const isLoginPage = window.location.pathname === "/login";
@@ -48,26 +42,10 @@ function App() {
               <Route path='/usuarios/editar/:id' element={<CompEditarUsuario />} />
               <Route path='/usuarios/crear/' element={<CompCrearUsuario />} />
 
-<<<<<<< HEAD
-          {/* Crud paciente */}
-          <Route path='/pacientes/' element={<CompMostrarPacientes/>}/>
-          <Route path='/pacientes/editar/:id' element={<CompEditarPaciente/>}/>
-          <Route path='/pacientes/crear/' element={<CompCrearPaciente/>}/>
-
-          {/* Crud paciente */}
-          <Route path='/areas/' element={<CompMostrarArea/>}/>
-          <Route path='/areas/editar/:id' element={<CompEditarArea/>}/>
-          <Route path='/areas/crear/' element={<CompCrearArea/>}/>
-
-          {/* Crud llamadas */}
-          <Route path='/llamadas/' element={<CompMostrarLlamadas/>}/>
-
-=======
               {/* Crud paciente */}
               <Route path='/pacientes/' element={<CompMostrarPacientes />} />
               <Route path='/pacientes/editar/:id' element={<CompEditarPaciente />} />
               <Route path='/pacientes/crear/' element={<CompCrearPaciente />} />
->>>>>>> Dami
 
               {/* Crud paciente */}
               <Route path='/areas/' element={<CompMostrarArea />} />

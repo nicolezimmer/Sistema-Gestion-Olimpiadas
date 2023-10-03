@@ -3,13 +3,16 @@ import axios from 'axios'
 import moment from 'moment'
 import Filtros from './Filtros'
 import Resultados from './Resultados'
+import { GraBarras } from './GraBarras'
+import { GraLineas } from './GraLineas'
 
+import { GraTorta } from './GraTorta'
 const URI = 'http://localhost:8000/llamadas/'
 const URIusuario = 'http://localhost:8000/usuarios/'
 const URIpaciente = 'http://localhost:8000/pacientes/'
 const URIarea = 'http://localhost:8000/areas/'
 
-const CompFiltrarLlamadas = () => {
+const CompMostrarLlamadas = () => {
   const [registros, setRegistros] = useState([]);
   const [updateStatus, setUpdateStatus] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
@@ -166,6 +169,7 @@ const CompFiltrarLlamadas = () => {
             registrosFiltrados={registrosFiltrados}
           />
           <div>
+          <div className='flex-container'>
           <GraBarras
             registrosFiltrados={registrosFiltrados}
             areasParaGraficar={areasParaGraficar}
@@ -176,12 +180,12 @@ const CompFiltrarLlamadas = () => {
           />
           <GraTorta
             registrosFiltrados={registrosFiltrados}
-
           />
           </div>
 
+          </div>
     </div>
   );
 };
 
-export default CompFiltrarLlamadas;
+export default CompMostrarLlamadas;

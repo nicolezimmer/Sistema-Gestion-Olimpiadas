@@ -100,7 +100,7 @@ const Filtros = ({
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Link to={`/llamadas/estadisticas/`} className='btn btn-primary mt-2 mb-2' style={{margin:"2vh",padding:"2vh", height:"8.5vh",}}>Estadisticas</Link>
+      <Link to={`/llamadas/estadisticas/`} className='btn btn-primary mt-2 mb-2' style={{margin:"2vh",padding:"2vh", height:"8.5vh",}}>Estadisticas Generales</Link>
     </div>
     
   );

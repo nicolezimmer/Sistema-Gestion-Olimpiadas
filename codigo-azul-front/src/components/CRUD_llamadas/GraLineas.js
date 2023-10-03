@@ -47,7 +47,8 @@ export const GraLineas = ({
 
   return (
     <div className='flex-item'>
-      <p>Tiempo de respuesta para las emergencias</p>
+      <p>Promedio de Tiempo de Respuesta: {promedioTiempoRespuesta.toFixed(2)} minutos</p>
+
       <ResponsiveContainer width={"100%"} aspect={2}>
         <LineChart data={data} width={500} height={300} margin={{ top: 5, right: 50, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray={"1vh 1vh 1vh "} />
@@ -60,8 +61,6 @@ export const GraLineas = ({
         </LineChart>
 
       </ResponsiveContainer>
-
-      <p>Promedio de Tiempo de Respuesta: {promedioTiempoRespuesta.toFixed(2)} minutos</p>
 
     </div>
   )
